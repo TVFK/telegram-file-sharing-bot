@@ -17,6 +17,7 @@
   <url>http://maven.apache.org</url>
   <modules>
     <module>dispatcher</module>
+    <module>common-rabbitmq</module>
   </modules>
 
   <properties>
@@ -30,7 +31,6 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
@@ -39,8 +39,10 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
+      <version>1.18.32</version>
       <scope>provided</scope>
     </dependency>
+
 
   </dependencies>
 </project>
