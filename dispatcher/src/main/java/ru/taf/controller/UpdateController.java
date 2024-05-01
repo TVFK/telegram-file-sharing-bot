@@ -16,8 +16,8 @@ import static ru.taf.RabbitQueue.*;
 @Log4j2
 public class UpdateController {
     private TelegramFileSharingBot sharingBot;
-    private MessageUtils messageUtils;
-    private UpdateProducerImpl updateProducer;
+    private final MessageUtils messageUtils;
+    private final UpdateProducerImpl updateProducer;
 
     public UpdateController(MessageUtils messageUtils, UpdateProducerImpl updateProducer) {
         this.messageUtils = messageUtils;
@@ -61,7 +61,7 @@ public class UpdateController {
     }
 
 
-    private void setFileIsReceivedView(Update update) {va
+    private void setFileIsReceivedView(Update update) {
         SendMessage sendMessage = messageUtils.generateSendMessageWithText(update, "Обрабатывается...");
         setView(sendMessage);
     }
