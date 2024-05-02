@@ -18,10 +18,12 @@
   <modules>
     <module>dispatcher</module>
     <module>common-rabbitmq</module>
+    <module>node</module>
   </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <telegrambot.starter.version>6.9.7.1</telegrambot.starter.version>
   </properties>
 
   <dependencies>

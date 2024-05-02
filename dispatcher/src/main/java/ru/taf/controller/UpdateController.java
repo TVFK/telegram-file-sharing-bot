@@ -66,23 +66,23 @@ public class UpdateController {
         setView(sendMessage);
     }
 
-    private void setView(SendMessage sendMessage){
+    public void setView(SendMessage sendMessage){
         sharingBot.sendAnswerMessage(sendMessage);
     }
 
 
     private void processPhotoMessage(Update update) {
-        updateProducer.produce(PHOTO_MESSAGE_UPDATE.getVal(), update);
+        updateProducer.produce(PHOTO_MESSAGE_UPDATE, update);
         setFileIsReceivedView(update);
     }
 
     private void processDocMessage(Update update) {
-        updateProducer.produce(DOC_MESSAGE_UPDATE.getVal(), update);
+        updateProducer.produce(DOC_MESSAGE_UPDATE, update);
         setFileIsReceivedView(update);
     }
 
     private void processTextMessage(Update update) {
-        updateProducer.produce(TEXT_MESSAGE_UPDATE.getVal(), update);
+        updateProducer.produce(TEXT_MESSAGE_UPDATE, update);
         setFileIsReceivedView(update);
     }
 }
