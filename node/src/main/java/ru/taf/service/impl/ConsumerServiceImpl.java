@@ -1,11 +1,12 @@
-package ru.taf.service;
+package ru.taf.service.impl;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.taf.service.ConsumerService;
+import ru.taf.service.MainService;
+import ru.taf.service.ProducerService;
 
 import static ru.taf.RabbitQueue.*;
 @Service
@@ -13,9 +14,11 @@ import static ru.taf.RabbitQueue.*;
 public class ConsumerServiceImpl implements ConsumerService {
 
     private final ProducerService producerService;
+    private final MainService mainService;
 
-    public ConsumerServiceImpl(ProducerService producerService) {
+    public ConsumerServiceImpl(ProducerService producerService, MainService mainService) {
         this.producerService = producerService;
+        this.mainService = mainService;
     }
 
     @Override
@@ -23,11 +26,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     public void consumeTextMessageUpdates(Update update) {
         log.info("node text");
 
-        Message message = update.getMessage();
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(message.getChatId().toString());
-        sendMessage.setText("Hello motherfucker");
-        producerService.produceAnswer(sendMessage);
+        mainService.processTextMessage(update);
     }
 
     @Override

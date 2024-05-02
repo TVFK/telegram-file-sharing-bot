@@ -8,3 +8,11 @@ spring:
     username: username
     password: password
 
+  datasource:
+    url: jdbc:postgresql://localhost:5433/db_name
+    username: username
+    password: password
+
+  flyway:
+    schemas:
+      - public
