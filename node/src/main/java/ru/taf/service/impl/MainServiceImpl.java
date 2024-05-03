@@ -6,6 +6,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.User;
 import ru.taf.entity.AppDocument;
+import ru.taf.entity.AppPhoto;
 import ru.taf.entity.RawData;
 import ru.taf.entity.TgUser;
 import ru.taf.entity.enums.UserState;
@@ -89,8 +90,15 @@ public class MainServiceImpl implements MainService {
             return;
         }
 
-        var answer = "Photo загружен! Ссылка для скачивания";
-        sendAnswer(answer, chatId);
+        try {
+            AppPhoto photo = fileService.processPhoto(update.getMessage());
+            var answer = "Photo загружен! Ссылка для скачивания";
+            sendAnswer(answer, chatId);
+        } catch (UploadFileException ex) {
+            log.error(ex);
+            String error = "К сожалению, загрузка фото не удалась. Повторите попытку позже.";
+            sendAnswer(error, chatId);
+        }
     }
 
     private boolean isNOtAllowToSetContent(Long chatId, TgUser tgUser) {

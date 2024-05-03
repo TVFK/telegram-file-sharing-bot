@@ -22,5 +22,5 @@ public class AppPhoto {
     @OneToOne
     private BinaryContent binaryContent;
 
-    private Long fileSize;
+    private Integer fileSize;
 }
