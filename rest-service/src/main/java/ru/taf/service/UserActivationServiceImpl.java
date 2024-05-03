@@ -3,6 +3,7 @@ package ru.taf.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.taf.repository.TgUserRepository;
+import ru.taf.utils.CryptoTool;
 
 @RequiredArgsConstructor
 @Service

@@ -7,6 +7,7 @@ import ru.taf.entity.AppDocument;
 import ru.taf.entity.AppPhoto;
 import ru.taf.repository.AppDocumentRepository;
 import ru.taf.repository.AppPhotoRepository;
+import ru.taf.utils.CryptoTool;
 
 @Log4j2
 @RequiredArgsConstructor
